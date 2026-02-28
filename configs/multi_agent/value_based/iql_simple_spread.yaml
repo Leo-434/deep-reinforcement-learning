@@ -1,0 +1,36 @@
+algo:
+  name: "IQL"
+
+env:
+  is_marl: true
+  env_id: "mpe.simple_spread_v3"
+  log_dir: "logs/iql_spread_bench"
+  save_dir: "models/iql_spread_bench"
+  max_cycles: 25
+
+network:
+  hidden_dims: [64, 64]
+
+buffer:
+  capacity: 20000
+
+exploration:
+  epsilon_start: 1.0
+  epsilon_min: 0.05
+  epsilon_decay: 0.99995
+
+target:
+  gamma: 0.99
+  tau: 0.05
+  update_freq: 1
+
+optim:
+  lr: 0.001
+  max_grad_norm: 10.0
+
+training:
+  max_steps: 100000
+  learning_starts: 1000
+  batch_size: 128
+  train_freq: 1
+  save_freq: 50000

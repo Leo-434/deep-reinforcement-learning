@@ -1,0 +1,27 @@
+algo:
+  name: "PG"
+
+env:
+  env_id: "CartPole-v1"
+  log_dir: "logs/pg_cartpole"
+  save_dir: "models/pg_cartpole"
+
+network:
+  hidden_dims: [64, 64]
+
+buffer:
+  capacity: 1000 # RolloutBuffer size
+
+target:
+  gamma: 0.99
+
+optim:
+  lr: 0.001
+  max_grad_norm: 0.5
+
+training:
+  max_steps: 100000
+  learning_starts: 100
+  batch_size: 100
+  train_freq: 100
+  save_freq: 50000

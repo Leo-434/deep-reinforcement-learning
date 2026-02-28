@@ -1,0 +1,35 @@
+algo:
+  name: "SAC"
+
+env:
+  env_id: "Pendulum-v1"
+  log_dir: "logs/sac_pendulum"
+  save_dir: "models/sac_pendulum"
+  seed: 42
+  num_actions: 1
+  max_action: 2.0
+
+network:
+  hidden_dims: [256, 256]
+
+buffer:
+  capacity: 100000
+
+target:
+  gamma: 0.99
+  tau: 0.005
+  alpha: 0.2 # Entropy temperature (can be auto-tuned)
+  auto_alpha: true
+
+optim:
+  lr_actor: 0.0003
+  lr_critic: 0.0003
+  lr_alpha: 0.0003
+  max_grad_norm: 0.5
+
+training:
+  max_steps: 100000
+  learning_starts: 2000
+  batch_size: 100
+  train_freq: 1
+  save_freq: 50000

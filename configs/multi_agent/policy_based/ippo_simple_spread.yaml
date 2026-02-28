@@ -1,0 +1,35 @@
+algo:
+  name: "IPPO"
+
+env:
+  is_marl: true
+  env_id: "mpe.simple_spread_v3"
+  log_dir: "logs/ippo_spread_bench"
+  save_dir: "models/ippo_spread_bench"
+  max_cycles: 25
+
+network:
+  hidden_dims: [128, 128]
+
+buffer:
+  capacity: 2000
+
+exploration:
+  std_init: 1.0
+
+target:
+  gamma: 0.99
+  gae_lambda: 0.95
+
+optim:
+  lr: 0.0005
+  max_grad_norm: 5.0
+
+training:
+  max_steps: 20000
+  learning_starts: 2000
+  batch_size: 128
+  train_freq: 1000
+  ppo_epochs: 5
+  clip_ratio: 0.2
+  save_freq: 20000

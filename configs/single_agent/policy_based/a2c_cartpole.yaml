@@ -1,0 +1,29 @@
+algo:
+  name: "A2C"
+
+env:
+  env_id: "CartPole-v1"
+  log_dir: "logs/a2c_cartpole_bench"
+  save_dir: "models/a2c_cartpole_bench"
+
+network:
+  hidden_dims: [64, 64]
+
+buffer:
+  capacity: 1000
+
+target:
+  gamma: 0.99
+  gae_lambda: 0.95
+
+optim:
+  lr_actor: 0.001
+  lr_critic: 0.005
+  max_grad_norm: 0.5
+
+training:
+  max_steps: 100000
+  learning_starts: 100
+  batch_size: 100
+  train_freq: 100
+  save_freq: 50000

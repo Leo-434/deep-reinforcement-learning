@@ -1,0 +1,30 @@
+algo:
+  name: DuelingDQN
+env:
+  env_id: CartPole-v1
+  log_dir: logs/dueling_dqn_cartpole
+  save_dir: models/dueling_dqn_cartpole
+  seed: 42
+network:
+  hidden_dims:
+  - 64
+  - 64
+buffer:
+  capacity: 10000
+exploration:
+  epsilon_start: 1.0
+  epsilon_min: 0.05
+  epsilon_decay: 0.999
+target:
+  gamma: 0.99
+  tau: 1.0
+  update_freq: 100
+optim:
+  lr: 0.001
+  max_grad_norm: 10.0
+training:
+  max_steps: 100000
+  learning_starts: 1000
+  batch_size: 64
+  train_freq: 1
+  save_freq: 50000
